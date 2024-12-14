@@ -55,10 +55,9 @@ def myIBCF():
     # user rating
     newuser = np.full((n,1), np.nan)
     for idx, rating in enumerate(ratings):
-        if rating is None:
-            newuser[idx, 0] = np.nan
-        else:
-            newuser[idx, 0] = rating + 1
+        if rating is not None:
+            id = popular.index[idx]
+            newuser[top_similarity.index.get_loc(id), 0] = rating + 1
 
     # rating prediction
     prediction = np.full(n, np.nan)
